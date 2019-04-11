@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% block head %}
+    <meta charset="utf-8">
+    <title>Base</title>
+    {% endblock %}
+  </head>
+  <body>
+    <br>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+      <a class="navbar-brand" href="/">Login Challenge</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample09">
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item active">
+        {% if user.is_authenticated %}
+        <ul class="nav navbar-nav">
+            <li><a class="nav-link" href="{% url 'accounts:home' %}">Home</a></li>
+            <li><a class="nav-link" href="{% url 'accounts:profile' %}">Profile</a></li>
+            <li><a class="nav-link" href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
+            <li><a class="nav-link" href="{% url 'accounts:change_password' %}">Change Password</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a class="nav-link" href="{% url 'accounts:logout' %}">Log out</a></li>
+        </ul>
+        {% else %}
+        <ul class="nav navbar-nav">
+            <li><a class="nav-link" href="{% url 'accounts:reset_password' %}">Reset Password</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a class="nav-link" href="{% url 'accounts:login' %}">Login</a></li>
+            <li><a class="nav-link" href="{% url 'accounts:register' %}">Register</a></li>
+        </ul>
+        {% endif %}
+      </div>
+    </nav>
+    {% block body %}
+    {% endblock %}
+  </body>
+</html>
