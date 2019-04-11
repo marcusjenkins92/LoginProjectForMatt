@@ -39,4 +39,4 @@ sudo pip install Django
 
 -run the server to run the project
 
-$ python manage.py runserver
+$ python manage.py runserver 8000
